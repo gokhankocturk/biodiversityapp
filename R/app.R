@@ -11,14 +11,12 @@ biodiversityapp <- function(...) {
 
   CSS <- "
   h2 {height: 400px; width: 100%; color: #F5F5DC; padding: 10px; border: 2px solid coral; border-radius: 10px; text-align: center; font-size: 16px;}
+  h3 {margin-top: 0px; width: 100%; color: green; border: 2px solid coral; border-radius: 10px; text-align: left; font-size: 20px; padding: 10px;}
   .content-wrapper {background-color: #ECF0BB;}
   .main-header .logo {text-align: center; height: 100px; background-color: #80D4A5 !important; color: green !important; font-weight: bold; font-size: 26px;}
-  h3 {height: 100%; width: 100%; color: green; border: 2px solid coral; border-radius: 10px; text-align: left; font-size: 20px; padding: 10px;}
   h4 {color: green; border: 2px solid coral; border-radius: 10px; text-align: center; font-weight: bold; font-size: 20px; padding: 10px;}
-
-  #search_name {color: coral; border: 2px solid coral; border-radius: 10px;}
-  label {color: green; border: 2px solid coral; border-radius: 5px; font-weight: bold; font-size: 18px; padding: 5px; background-color: #ECF0BB;}
   hr {border: 1px dashed green;}
+  label {color: green; border: 2px solid coral; border-radius: 5px; font-weight: bold; font-size: 18px; padding: 5px; background-color: #ECF0BB;}
   .my_style {color: #F5F5DC; background-color: green;}
   "
 
@@ -31,7 +29,6 @@ biodiversityapp <- function(...) {
     hr(),
     infoUI("info"),
     hr(),
-
     fluidRow(
       column(width = 6, plotOutput("monthly")),
       column(width = 6, plotOutput("yearly"))
@@ -73,15 +70,6 @@ biodiversityapp <- function(...) {
         xlab("Year") +
         ylab("Occurence")
     })
-
-
-    # output$deneme <- renderDataTable({
-    #   req(getdata$namesend())
-    #   # list_vernacular <- occurence[grepl(input$search_name, occurence$vernacularName, ignore.case = TRUE), ]
-    #   list_vernacular <- filter_at(occurence, vars(vernacularName, scientificName), any_vars(str_detect(., regex(getdata$namesend(), ignore_case = T))))
-    #   list_vernacular
-    # })
-
   }
 
   shinyApp(ui, server, ...)

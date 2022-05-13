@@ -11,16 +11,19 @@
 maptimeUI <- function(id) {
   ns <- NS(id)
   tagList(
-    fluidRow(
-      column(width = 6, leafletOutput(ns("map"))),
-      column(width = 6, plotOutput(ns("graph")))
-    ),
-    br(),
-    hr(),
-    fluidRow(
-      column(width = 12, h4("Time Visualization for which cities the species observed"))
-    ),
-    timevisOutput(ns("timevis"))
+    conditionalPanel(
+      condition = "input.select_name != ''", ns = NS("select"),
+      fluidRow(
+        column(width = 6, leafletOutput(ns("map"))),
+        column(width = 6, plotOutput(ns("graph")))
+      ),
+      br(),
+      hr(),
+      fluidRow(
+        column(width = 12, h4("Time Visualization for which cities the species observed"))
+      ),
+      timevisOutput(ns("timevis"))
+    )
   )
 }
 
@@ -38,24 +41,10 @@ maptimeSERVER <- function(id, data, species) {
                title = paste0("Individual count distribution by city: ", species()),
                caption = "Source: www.gbif.org") +
           theme_ipsum()
-          # theme(
-          #       title = element_text(color = "black", face = "bold"),
-          #       axis.ticks = element_blank(),
-          #       plot.background = element_rect("white"),
-          #       panel.background = element_rect("white"),
-          #       panel.grid.minor = element_line(color = "black"),
-          #       axis.title = element_text(color = "#292929", face = "bold"),
-          #       axis.text = element_text(color = "#292929", face = "bold"),
-          #       strip.text.x = element_text(face = "bold", color = "#292929"),
-          #       # strip.background = element_blank(),
-          #       panel.spacing = unit(2, "lines"))
-
       })
-
 
       output$map <- renderLeaflet({
         req(species())
-
         data() %>%
           leaflet() %>%
           addTiles() %>%
@@ -100,7 +89,6 @@ maptimeSERVER <- function(id, data, species) {
               iconColor = "white"
             )
           )
-
       })
 
       output$timevis <- renderTimevis({

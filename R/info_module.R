@@ -11,20 +11,21 @@
 infoUI <- function(id) {
   ns <- NS(id)
   tagList(
-    fluidRow(
-      infoBoxOutput(ns("city"), width = 8),
-      infoBoxOutput(ns("kingdom"), width = 2),
-      infoBoxOutput(ns("observations"), width = 2)
+    conditionalPanel(
+      condition = "input.select_name != ''", ns = NS("select"),
+      fluidRow(
+        infoBoxOutput(ns("city"), width = 8),
+        infoBoxOutput(ns("kingdom"), width = 2),
+        infoBoxOutput(ns("observations"), width = 2)
+      )
     )
   )
-
 }
 
 # Creating module SERVER
 infoSERVER <- function(id, data) {
   moduleServer(id,
                function(input, output, session) {
-
                  output$kingdom <- renderInfoBox({
                    kingdom <- data() %>% group_by(kingdom) %>% summarize(x = n())
                    text <- ""
@@ -48,5 +49,4 @@ infoSERVER <- function(id, data) {
                    infoBox(title = HTML(paste("Ind. Count", br(), "Total")), value = total, icon = icon("bug"), color = "green", fill = TRUE)
                  })
                })
-
 }

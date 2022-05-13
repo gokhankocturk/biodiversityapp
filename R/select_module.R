@@ -12,11 +12,14 @@ selectUI <- function(id) {
 
     tagList(
       fluidRow(
-        column(width = 6, div(h3(tags$b("Search Field :"), " You can search species by scientific / vernacular name.",
+        column(width = 6, h3(tags$b("Search Field :"), " You can search species by scientific / vernacular name.",
                                  br(),
-                                 tags$b("Search Button :"), " You can click on search button to see the results.",
                                  br(),
-                                 tags$b("Select Field :"), " You can select a scientific / vernacular name. "))),
+                                 tags$b("Search Button :"), " You can click on search button to display matched names.",
+                                 br(),
+                                 br(),
+                                 tags$b("Select Field :"), " You can select a scientific / vernacular name. ")),
+
         column(width = 3, searchInput(ns("search_name"),
                                       label = "Search a name:",
                                       placeholder = NULL,
@@ -26,9 +29,7 @@ selectUI <- function(id) {
         column(width = 3, selectInput(ns("select_name"),
                                       label = "Select Species name(s):",
                                       choices = NULL))
-
       ),
-
 
       conditionalPanel(
         condition = "input.select_name == ''", ns = ns,
@@ -54,17 +55,14 @@ selectUI <- function(id) {
                 tags$i(tags$b("Threats to Biodiversity")),
                 br(),
                 "Over the last century, humans have come to dominate the planet, causing rapid ecosystem change and massive loss of biodiversity across the planet. This has led some people to refer to the time we now live in as the “anthropocene.” While the Earth has always experienced changes and extinctions, today they are occurring at an unprecedented rate. Major direct threats to biodiversity include habitat loss and fragmentation, unsustainable resource use, invasive species, pollution, and global climate change. The underlying causes of biodiversity loss, such as a growing human population and overconsumption are often complex and stem from many interrelated factors.")
-
             ),
+
             column(
               width = 3,
-              #fluidRow(tags$img(src = "foto.jpg", align = "center", width = "90%", alt = "GOKHAN")),
-              #br(),
               br(),
               fluidRow(tags$img(src = "https://media.tehrantimes.com/d/t/2021/04/05/4/3734891.jpg", alt = "Link to image may be broken", align = "center", width = "90%", height = "190px")),
               br(),
               fluidRow(tags$img(src = "https://c.tadst.com/gfx/1200x630/biodiversity-year.jpg?1", alt = "Link to image may be broken", align = "center", width = "90%", height = "190px"))
-
             )
           )
         )
@@ -90,8 +88,8 @@ selectSERVER <- function(id) {
                      missing_removed <- unique(filter_at(occurence,
                                            vars(vernacularName, scientificName),
                                            any_vars(str_detect(., regex(input$search_name, ignore_case = T))))$vernacularName)
-
                      missing_removed <- missing_removed[!is.na(missing_removed)]
+
                      updateSelectInput(session,
                                        "select_name",
                                        choices = c(sort(missing_removed),
@@ -99,7 +97,6 @@ selectSERVER <- function(id) {
                                                                     vars(vernacularName, scientificName),
                                                                     any_vars(str_detect(., regex(input$search_name, ignore_case = T))))$scientificName))))}
                  )
-
 
                  send_out <- list(
                    datasend = reactive({list_vernacular()}),
