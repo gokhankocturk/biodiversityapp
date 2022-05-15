@@ -73,7 +73,7 @@ maptimeSERVER <- function(id, data, species) {
             position = "topleft"
           ) %>%
           addLegend(
-            colors = "blue",
+            colors = "green",
             labels = "Biodiversity",
             title = "Poland data set",
             opacity = 1,
@@ -82,7 +82,7 @@ maptimeSERVER <- function(id, data, species) {
           addAwesomeMarkers(
             lat = data()$LAT,
             lng = data()$LON,
-            label = paste0("Observations: ",data()$individualCount),
+            label = paste0("Observations: ", data()$individualCount),
             icon = makeAwesomeIcon(
               icon = "flag",
               markerColor = "green",

@@ -12,9 +12,9 @@ biodiversityapp <- function(...) {
   CSS <- "
   h2 {height: 400px; width: 100%; color: #F5F5DC; padding: 10px; border: 2px solid coral; border-radius: 10px; text-align: center; font-size: 16px;}
   h3 {margin-top: 0px; width: 100%; color: green; border: 2px solid coral; border-radius: 10px; text-align: left; font-size: 20px; padding: 10px;}
+  h4 {color: green; border: 2px solid coral; border-radius: 10px; text-align: center; font-weight: bold; font-size: 20px; padding: 10px;}
   .content-wrapper {background-color: #ECF0BB;}
   .main-header .logo {text-align: center; height: 100px; background-color: #80D4A5 !important; color: green !important; font-weight: bold; font-size: 26px;}
-  h4 {color: green; border: 2px solid coral; border-radius: 10px; text-align: center; font-weight: bold; font-size: 20px; padding: 10px;}
   hr {border: 1px dashed green;}
   label {color: green; border: 2px solid coral; border-radius: 5px; font-weight: bold; font-size: 18px; padding: 5px; background-color: #ECF0BB;}
   .my_style {color: #F5F5DC; background-color: green;}
@@ -26,7 +26,6 @@ biodiversityapp <- function(...) {
   body <- dashboardBody(
     tags$style(CSS),
     selectUI("select"),
-    hr(),
     infoUI("info"),
     hr(),
     fluidRow(
@@ -48,9 +47,9 @@ biodiversityapp <- function(...) {
 
     output$monthly <- renderPlot({
       data <- getdata$datasend()
-      data2 <- data %>% group_by(month_name) %>% summarize(occurence = sum(individualCount))
-      data2$month_name <- fct_relevel(data2$month_name, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
-      ggplot(data2, aes(x = month_name, y = occurence, label = occurence)) +
+      data <- data %>% group_by(month_name) %>% summarize(occurence = sum(individualCount))
+      data$month_name <- fct_relevel(data$month_name, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+      ggplot(data, aes(x = month_name, y = occurence, label = occurence)) +
         geom_col(fill = "#69b3a2", color = "black") +
         geom_text(vjust = -0.25, hjust = 0.5, colour = "black", size = 4) +
         theme_ipsum() +
@@ -61,8 +60,8 @@ biodiversityapp <- function(...) {
 
     output$yearly <- renderPlot({
       data <- getdata$datasend()
-      data2 <- data %>% group_by(year) %>% summarize(occurence = sum(individualCount))
-      ggplot(data2, aes(x = year, y = occurence, group = 1)) +
+      data <- data %>% group_by(year) %>% summarize(occurence = sum(individualCount))
+      ggplot(data, aes(x = year, y = occurence, group = 1)) +
         geom_line(color = "green") +
         geom_point(shape = 21, color = "black", fill = "#69b3a2", size = 6) +
         theme_ipsum() +

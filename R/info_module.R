@@ -14,6 +14,7 @@ infoUI <- function(id) {
     conditionalPanel(
       condition = "input.select_name != ''", ns = NS("select"),
       fluidRow(
+        hr(),
         infoBoxOutput(ns("city"), width = 8),
         infoBoxOutput(ns("kingdom"), width = 2),
         infoBoxOutput(ns("observations"), width = 2)

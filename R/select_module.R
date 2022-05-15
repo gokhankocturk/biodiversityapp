@@ -27,7 +27,7 @@ selectUI <- function(id) {
                                       btnReset = icon("remove"))),
 
         column(width = 3, selectInput(ns("select_name"),
-                                      label = "Select Species name(s):",
+                                      label = "Select species name:",
                                       choices = NULL))
       ),
 
@@ -60,9 +60,9 @@ selectUI <- function(id) {
             column(
               width = 3,
               br(),
-              fluidRow(tags$img(src = "https://media.tehrantimes.com/d/t/2021/04/05/4/3734891.jpg", alt = "Link to image may be broken", align = "center", width = "90%", height = "190px")),
+              fluidRow(tags$img(src = "www/bio.gif", align = "center", width = "90%", height = "190px")),
               br(),
-              fluidRow(tags$img(src = "https://c.tadst.com/gfx/1200x630/biodiversity-year.jpg?1", alt = "Link to image may be broken", align = "center", width = "90%", height = "190px"))
+              fluidRow(tags$img(src = "www/bio2.jpg", align = "center", width = "90%", height = "190px"))
             )
           )
         )
