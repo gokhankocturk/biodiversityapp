@@ -1,6 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # biodiversityapp
 
 ![R](https://img.shields.io/badge/r-%23276DC3.svg?style=for-the-badge&logo=r&logoColor=white)
@@ -66,7 +64,7 @@ markers.
 ![map](www/map.JPG)  
 
 <span style="text-decoration: underline">**timevisOutput**</span>  
-The places where the selected species are observed are shown on time
+The cities where the selected species are observed are shown on time
 visualization output.  
 
 ![timevis](www/timevis.JPG)  
@@ -74,7 +72,7 @@ visualization output.
 # Installation
 
 Latest version of the application can be downloaded from
-[Github](https://github.com/) repository using the following command:
+[Github](https://github.com/) using the following command:
 
 ``` r
 # install.packages("devtools")
@@ -105,7 +103,8 @@ General structure of the package is as follows:
 |   +-- data_raw_check.R
 |   +-- info_module.R
 |   +-- maptime_module.R
-|   \-- select_module.R
+|   +-- select_module.R
+|   \-- www_path.R
 +-- README.md
 +-- README.Rmd
 +-- tests
@@ -115,7 +114,8 @@ General structure of the package is as follows:
 |   |   \-- test-data_raw_check.R
 |   \-- testthat.R
 \-- www
-    +-- biodiversity.jpg
+    +-- bio.gif
+    +-- bio2.jpg
     +-- by_city.JPG
     +-- by_month.JPG
     +-- by_year.JPG
@@ -128,11 +128,11 @@ General structure of the package is as follows:
 
 # Usage
 
-Biodiversity shiny app can be run in 2 ways;  
-1\. Biodiversity shiny app is deployed on “shinyapps.io” platform and
+Biodiversity app can be run in 2 ways;  
+1\. Biodiversity app is deployed on “shinyapps.io” platform and
 available at
-[here](https://gokhankocturk.shinyapps.io/marinedata_shinyapp/)  
-2\. You can also run the app with “biodiversityapp()” function as
+[here](https://gokhankocturk.shinyapps.io/biodiversityapp_appsilon/)  
+2\. You can also run the app with “**biodiversityapp()**” function as
 follows:  
 
 ``` r
@@ -176,7 +176,7 @@ way you expect.”*
 ## test-data\_raw\_check.R
 
 **Explanation**  
-Core variables like “LON”, “LAT”, “town” and “individaulCount” must not
+Core variables like “LON”, “LAT”, “town” and “individualCount” must not
 have any missing (NA) values. For this reason, raw data must be checked
 to see the potential problems in advance.  
 
@@ -198,8 +198,8 @@ It is a brief explanation about how many tests are passed or failed.
 
 **Explanation**  
 Users can search species by their scientific and vernacular name typing
-in **searchInput** and selecting matched name from **selectInput** in
-biodiversityapp. You can search by typing either full name or a
+in **searchInput** field and selecting matched name from **selectInput**
+field in biodiversityapp. You can search by typing either full name or a
 substring. If correct match exists, the data is created for map.  
 
 In this unit test we check whether the data is created accurately for

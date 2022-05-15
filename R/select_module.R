@@ -9,7 +9,6 @@
 # Creating module UI
 selectUI <- function(id) {
   ns <- NS(id)
-
     tagList(
       fluidRow(
         column(width = 6, h3(tags$b("Search Field :"), " You can search species by scientific / vernacular name.",
@@ -92,8 +91,8 @@ selectSERVER <- function(id) {
 
                      updateSelectInput(session,
                                        "select_name",
-                                       choices = c(sort(missing_removed),
-                                                   sort(unique(filter_at(occurence,
+                                       choices = sort(c(missing_removed,
+                                                   unique(filter_at(occurence,
                                                                     vars(vernacularName, scientificName),
                                                                     any_vars(str_detect(., regex(input$search_name, ignore_case = T))))$scientificName))))}
                  )

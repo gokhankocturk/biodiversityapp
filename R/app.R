@@ -9,6 +9,9 @@
 
 biodiversityapp <- function(...) {
 
+  ####################################
+  # Defining CSS
+  ####################################
   CSS <- "
   h2 {height: 400px; width: 100%; color: #F5F5DC; padding: 10px; border: 2px solid coral; border-radius: 10px; text-align: center; font-size: 16px;}
   h3 {margin-top: 0px; width: 100%; color: green; border: 2px solid coral; border-radius: 10px; text-align: left; font-size: 20px; padding: 10px;}
@@ -19,6 +22,11 @@ biodiversityapp <- function(...) {
   label {color: green; border: 2px solid coral; border-radius: 5px; font-weight: bold; font-size: 18px; padding: 5px; background-color: #ECF0BB;}
   .my_style {color: #F5F5DC; background-color: green;}
   "
+
+
+  ####################################
+  # Defining layout for App
+  ####################################
 
   header <- dashboardHeader(title = tagList("APPSILON", br(), icon("bug", class = "fa-spin"), "Biodiversity Assignment", icon("globe", class = "fa-spin")),
                             titleWidth = "100%")
@@ -38,7 +46,16 @@ biodiversityapp <- function(...) {
 
   sidebar = dashboardSidebar(disable = TRUE)
 
+
+  ####################################
+  # Defining main UI
+  ####################################
+
   ui <- dashboardPage(header = header, body = body, sidebar = sidebar)
+
+  ####################################
+  # Defining main SERVER
+  ####################################
 
   server <- function(input, output, session) {
     getdata <- selectSERVER("select")

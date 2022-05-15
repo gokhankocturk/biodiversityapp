@@ -2,7 +2,6 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -70,7 +69,7 @@ The cities where the selected species are observed are shown on time visualizati
 
 # Installation
 
-Latest version of the application can be downloaded from [Github](https://github.com/) repository using the following command:
+Latest version of the application can be downloaded from [Github](https://github.com/) using the following command:
 
 ```r
 # install.packages("devtools")
@@ -99,7 +98,8 @@ General structure of the package is as follows:
 |   +-- data_raw_check.R
 |   +-- info_module.R
 |   +-- maptime_module.R
-|   \-- select_module.R
+|   +-- select_module.R
+|   \-- www_path.R
 +-- README.md
 +-- README.Rmd
 +-- tests
@@ -109,7 +109,8 @@ General structure of the package is as follows:
 |   |   \-- test-data_raw_check.R
 |   \-- testthat.R
 \-- www
-    +-- biodiversity.jpg
+    +-- bio.gif
+    +-- bio2.jpg
     +-- by_city.JPG
     +-- by_month.JPG
     +-- by_year.JPG
@@ -121,7 +122,7 @@ General structure of the package is as follows:
 
 # Usage
 Biodiversity app can be run in 2 ways;\
-1. Biodiversity app is deployed on "shinyapps.io" platform and available at [here](https://gokhankocturk.shinyapps.io/marinedata_shinyapp/)\
+1. Biodiversity app is deployed on "shinyapps.io" platform and available at [here](https://gokhankocturk.shinyapps.io/biodiversityapp_appsilon/)\
 2. You can also run the app with "**biodiversityapp()**" function as follows:\
 ```r
 library(biodiversityapp)
@@ -175,7 +176,7 @@ It is a brief explanation about how many tests are passed or failed.\
 
 ## test-data_for_map.R
 **Explanation**\
-Users can search species by their scientific and vernacular name typing in **searchInput** and selecting matched name from **selectInput** in biodiversityapp. You can search by typing either full name or a substring. If correct match exists, the data
+Users can search species by their scientific and vernacular name typing in **searchInput**  field and selecting matched name from **selectInput** field in biodiversityapp. You can search by typing either full name or a substring. If correct match exists, the data
 is created for map.\
 
 In this unit test we check whether the data is created accurately for different searches. 

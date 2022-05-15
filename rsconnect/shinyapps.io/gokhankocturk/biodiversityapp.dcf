@@ -1,0 +1,12 @@
+name: biodiversityapp
+title: biodiversityapp
+username:
+account: gokhankocturk
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6305825
+bundleId: 5908459
+url: https://gokhankocturk.shinyapps.io/biodiversityapp/
+when: 1652637084.31855
+asMultiple: FALSE
+asStatic: FALSE
