@@ -59,9 +59,9 @@ selectUI <- function(id) {
             column(
               width = 3,
               br(),
-              fluidRow(tags$img(src = "www/bio.gif", align = "center", width = "90%", height = "190px")),
+              fluidRow(tags$img(src = "https://i.gifer.com/7ZKf.gif", align = "center", width = "90%", height = "190px")),
               br(),
-              fluidRow(tags$img(src = "www/bio2.jpg", align = "center", width = "90%", height = "190px"))
+              fluidRow(tags$img(src = "https://media.tehrantimes.com/d/t/2021/04/05/4/3734891.jpg", align = "center", width = "90%", height = "190px"))
             )
           )
         )
